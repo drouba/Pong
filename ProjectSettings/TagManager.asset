@@ -11,6 +11,10 @@ TagManager:
   - playerBack
   - cpuBack
   - ball
+  - EndGame
+  - PlayerWin
+  - SurvivalEnd
+  - 2PlayerEnd
   layers:
   - Default
   - TransparentFX

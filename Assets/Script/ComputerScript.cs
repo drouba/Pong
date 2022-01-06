@@ -40,9 +40,9 @@ public class ComputerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        //play hit sound
-        hitSound.Play();
+        if(collision.gameObject.CompareTag("ball"))
+            //play hit sound
+            hitSound.Play();
     }
 
 }

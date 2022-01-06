@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class P2Controller : MonoBehaviour
 {
     // movement variables
     private float verticalInput;
@@ -38,19 +38,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
         if (gameManager.sendOff && collision.gameObject.CompareTag("ball"))
         {
             //play hit sound
             hitSound.Play();
         }
-            
+
     }
 
     void MovePlayer()
     {
         //player input
-        verticalInput = Input.GetAxis("Vertical");
+        verticalInput = Input.GetAxis("P2_Vertical");
 
         // move player
         transform.Translate(Vector2.up * Time.deltaTime * speed * verticalInput);
@@ -60,5 +60,4 @@ public class PlayerController : MonoBehaviour
         viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y * -1 + offset, screenBounds.y - offset);
         transform.position = viewPos;
     }
-
 }
