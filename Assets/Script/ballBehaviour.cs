@@ -78,11 +78,11 @@ public class ballBehaviour : MonoBehaviour
     {
         if (towardsCpu)
         {
-            transform.Translate(vectMov * Time.deltaTime * ballSpeed);
+            transform.Translate(vectMov * Time.deltaTime * ballSpeed * gameManager.difficulty);
         }
         else
         {
-            transform.Translate(vectMov * Time.deltaTime * ballSpeed * -1);
+            transform.Translate(vectMov * Time.deltaTime * ballSpeed * gameManager.difficulty * -1);
         }
 
 

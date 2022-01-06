@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public AudioSource startSound;
     private int gameType; // 1 = single player tournament, 2 = single player survival, 3 = 2 player tournament
     private int ptsToWin = 5;
+    public float difficulty;
+    public Canvas diffCanvas;
 
 
     // UI Variables
@@ -80,21 +82,48 @@ public class GameManager : MonoBehaviour
     {
         started = true;
         menu.gameObject.SetActive(false);
+        diffCanvas.gameObject.SetActive(false);
         startSound.Play();
+    }
+
+    public void DifficultySelection()
+    {
+        menu.gameObject.SetActive(false);
+        diffCanvas.gameObject.SetActive(true);
+
+    }
+
+    public void DiffEasy()
+    {
+        difficulty = 1;
+        StartGame();
+    }
+
+    public void DiffMedium()
+    {
+        difficulty = 1.5f;
+        StartGame();
+    }
+
+    public void DiffHard()
+    {
+        difficulty = 1.75f;
+        StartGame();
     }
 
     public void StartSinglePlayerTournament()
     {
-        StartGame();
+        
         EnableSinglePlayer();
         gameType = 1;
+        DifficultySelection();
     }
 
     public void StartSinglePlayerSurvival()
     {
-        StartGame();
         EnableSinglePlayer();
-        gameType = 2; 
+        gameType = 2;
+        DifficultySelection();
     }
 
     public void Start2Player()
