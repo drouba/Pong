@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ballBehaviour : MonoBehaviour
+public class BallBehaviour : MonoBehaviour
 {
 
     // movement variables
-    public float ballSpeed = 0.8f;
+    public float ballSpeed = 1.2f;
     private Vector2 vectMov = Vector2.right;
     private bool towardsCpu = true;
     public GameObject player;

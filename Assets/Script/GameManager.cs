@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     // variables for sendOff
-    [HideInInspector]
+    //[HideInInspector]
     public bool sendOff;
 
     // game selection, start and end variables
     [HideInInspector]
-    public bool started;
     public AudioSource startSound;
-    private int gameType; // 1 = single player tournament, 2 = single player survival, 3 = 2 player tournament
+    public int gameType; // 1 = single player tournament, 2 = single player survival, 3 = 2 player local
     private int ptsToWin = 5;
-    public float difficulty;
+    public float difficulty = 1;
+    public bool started;
     public Canvas diffCanvas;
 
 
@@ -26,8 +27,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI cpuPtsUI;
     private int playerPts = 0;
     private int cpuPts = 0;
-    //menu
-    public Canvas menu;
+
 
     // Endgame canvas varaibles
     public GameObject endGame;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (started && !sendOff && Input.GetKeyDown("space"))
+        if (started & !sendOff && Input.GetKeyDown("space"))
         {
             sendOff = true;
         }
@@ -80,70 +80,36 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
-        started = true;
-        menu.gameObject.SetActive(false);
         diffCanvas.gameObject.SetActive(false);
+        started = true;
         startSound.Play();
     }
 
     public void DifficultySelection()
     {
-        menu.gameObject.SetActive(false);
         diffCanvas.gameObject.SetActive(true);
 
     }
 
     public void DiffEasy()
     {
-        difficulty = 1;
+        difficulty = 0.8f;
         StartGame();
     }
 
     public void DiffMedium()
     {
-        difficulty = 1.5f;
+        difficulty = 1.2f;
         StartGame();
     }
 
     public void DiffHard()
     {
-        difficulty = 1.75f;
+        difficulty = 1.5f;
         StartGame();
     }
 
-    public void StartSinglePlayerTournament()
-    {
-        
-        EnableSinglePlayer();
-        gameType = 1;
-        DifficultySelection();
-    }
 
-    public void StartSinglePlayerSurvival()
-    {
-        EnableSinglePlayer();
-        gameType = 2;
-        DifficultySelection();
-    }
-
-    public void Start2Player()
-    {
-        StartGame();
-        Enable2Player();
-        gameType = 3;
-    }
-
-    void EnableSinglePlayer()
-    {
-        player2.GetComponent<P2Controller>().enabled = false;
-        player2.GetComponent<ComputerScript>().enabled = true;
-    }
-    
-    void Enable2Player()
-    {
-        player2.GetComponent<P2Controller>().enabled = true;
-        player2.GetComponent<ComputerScript>().enabled = false;
-    }
 
     void checkEndGame()
     {
@@ -171,6 +137,7 @@ public class GameManager : MonoBehaviour
     void GameEnd()
     {
         started = false;
+ 
     }
 
     void ReinitializeScores()
@@ -222,13 +189,8 @@ public class GameManager : MonoBehaviour
     public void ReturnToMain()
     {
         ReinitializeScores();
-        menu.gameObject.SetActive(true);
         startSound.Play();
-        endGame.gameObject.SetActive(false);
-        playerWin.gameObject.SetActive(false);
-        survivalEnd.gameObject.SetActive(false);
-        twoPlayerEnd.gameObject.SetActive(false);
-        playerLoose.gameObject.SetActive(false);
+        SceneManager.LoadScene("Menu");
 
     }
 }
