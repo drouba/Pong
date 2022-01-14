@@ -3019,8 +3019,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpeed: 7
-  player: {fileID: 1675661186}
-  cpu: {fileID: 1426571081}
   gameManager: {fileID: 1585697817}
 --- !u!50 &1367593893
 Rigidbody2D:
@@ -3055,7 +3053,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7e3fad724aadb468c751bea97edb75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1585697817}
 --- !u!1 &1425880827
 GameObject:
   m_ObjectHideFlags: 0
@@ -3285,7 +3282,6 @@ MonoBehaviour:
   ball: {fileID: 1367593890}
   speed: 4
   hitSound: {fileID: 1822753180}
-  gameManager: {fileID: 1585697817}
 --- !u!50 &1426571086
 Rigidbody2D:
   serializedVersion: 4
@@ -3319,7 +3315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7e3fad724aadb468c751bea97edb75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1585697817}
 --- !u!1 &1438877155
 GameObject:
   m_ObjectHideFlags: 0
@@ -4197,7 +4192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   hitSound: {fileID: 1125022313}
-  gameManager: {fileID: 1585697817}
+  isMine: 1
 --- !u!212 &1675661188
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4323,7 +4318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7e3fad724aadb468c751bea97edb75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1585697817}
 --- !u!1 &1705920997
 GameObject:
   m_ObjectHideFlags: 0

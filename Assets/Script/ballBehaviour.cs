@@ -9,8 +9,8 @@ public class BallBehaviour : MonoBehaviour
     public float ballSpeed = 1.2f;
     private Vector2 vectMov = Vector2.right;
     private bool towardsCpu = true;
-    public GameObject player;
-    public GameObject cpu;
+    //public GameObject player;
+    //public GameObject cpu;
 
     // variables for accessing game manager script
     public GameManager gameManager;
@@ -20,15 +20,17 @@ public class BallBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!gameManager.sendOff )
-            transform.position = new Vector3 (player.gameObject.transform.position.x +0.2f, player.gameObject.transform.position.y, transform.position.z);
+        if (!gameManager.started)
+            return;
+        if(!gameManager.sendOff)
+            transform.position = new Vector3 (GameObject.FindGameObjectWithTag("Player").transform.position.x +0.2f, GameObject.FindGameObjectWithTag("Player").transform.position.y, transform.position.z);
 
         else
             MoveBall();
@@ -60,7 +62,10 @@ public class BallBehaviour : MonoBehaviour
         {
             Debug.Log("Game Over");
             reset();
-            gameManager.UpdateCpuScore();
+            if (!GameManager.instance.isOnline)
+                GameManager.instance.UpdateCpuScore();
+            else
+                OnlineManager.instance.UpdatePlayer1Pts();
 
         }
             
@@ -68,7 +73,10 @@ public class BallBehaviour : MonoBehaviour
         {
             Debug.Log("Win!");
             reset();
-            gameManager.UpdatePlayerScore();
+            if(!GameManager.instance.isOnline)
+                GameManager.instance.UpdatePlayerScore();
+            else
+                OnlineManager.instance.UpdatePlayer2Pts();
 
         }
             

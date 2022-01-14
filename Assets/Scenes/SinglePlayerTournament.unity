@@ -1315,6 +1315,7 @@ MonoBehaviour:
   startSound: {fileID: 23971061}
   gameType: 1
   difficulty: 1
+  started: 0
   diffCanvas: {fileID: 952337646}
   playerPtsUI: {fileID: 123393785}
   cpuPtsUI: {fileID: 1557121974}
@@ -1730,7 +1731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7e3fad724aadb468c751bea97edb75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 596082845}
 --- !u!114 &817034695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,7 +1746,6 @@ MonoBehaviour:
   ball: {fileID: 1954933460}
   speed: 4
   hitSound: {fileID: 681941122}
-  gameManager: {fileID: 596082845}
 --- !u!50 &817034696
 Rigidbody2D:
   serializedVersion: 4
@@ -3032,7 +3031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7e3fad724aadb468c751bea97edb75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 596082845}
 --- !u!50 &1357975885
 Rigidbody2D:
   serializedVersion: 4
@@ -3094,7 +3092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   hitSound: {fileID: 1230597133}
-  gameManager: {fileID: 596082845}
+  isMine: 1
 --- !u!212 &1357975888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4578,7 +4576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7e3fad724aadb468c751bea97edb75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 596082845}
 --- !u!50 &1954933456
 Rigidbody2D:
   serializedVersion: 4
@@ -4639,8 +4636,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpeed: 7
-  player: {fileID: 1357975883}
-  cpu: {fileID: 817034693}
   gameManager: {fileID: 596082845}
 --- !u!212 &1954933459
 SpriteRenderer:

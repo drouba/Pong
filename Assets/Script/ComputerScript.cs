@@ -16,8 +16,6 @@ public class ComputerScript : MonoBehaviour
     // sound variables
     public AudioSource hitSound;
 
-    // variables for accessing game manager script
-    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +28,7 @@ public class ComputerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.up * Time.deltaTime * speed * gameManager.difficulty * (ball.position.y - transform.position.y));
+        transform.Translate(Vector2.up * Time.deltaTime * speed * GameManager.instance.difficulty * (ball.position.y - transform.position.y));
 
         Vector3 viewPos = transform.position;
         viewPos.x = Mathf.Clamp(viewPos.x, screenBounds.x * -1 + offset, screenBounds.x - offset);

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
 
     // variables for sendOff
     //[HideInInspector]
@@ -43,6 +44,16 @@ public class GameManager : MonoBehaviour
     // player2 variables 
     private GameObject player2;
 
+    //online variable
+    public bool isOnline = false;
+
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +69,8 @@ public class GameManager : MonoBehaviour
         if (started & !sendOff && Input.GetKeyDown("space"))
         {
             sendOff = true;
+            if (isOnline)
+                OnlineManager.instance.SendOff();
         }
 
         checkEndGame();

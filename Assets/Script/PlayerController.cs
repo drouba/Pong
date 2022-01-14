@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     // sound variables
     public AudioSource hitSound;
 
-    // variables for accessing game manager script
-    public GameManager gameManager;
+    public bool isMine = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        MovePlayer();
+        if(isMine)
+            MovePlayer();
 
 
 
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if (gameManager.sendOff && collision.gameObject.CompareTag("ball"))
+        if (GameManager.instance.sendOff && collision.gameObject.CompareTag("ball"))
         {
             //play hit sound
             hitSound.Play();

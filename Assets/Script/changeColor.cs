@@ -8,8 +8,6 @@ public class ChangeColor : MonoBehaviour
     // color change variables
     SpriteRenderer sprite;
 
-    // variables for accessing game manager script
-    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +18,7 @@ public class ChangeColor : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameManager.sendOff)
+        if (GameManager.instance.sendOff)
         {
             //change color everytime the ball hits somthing
             sprite.color = RandomColor();
